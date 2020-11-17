@@ -3,6 +3,7 @@ package nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.controller;
 import nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -21,7 +22,8 @@ public class BookController {
     // moet gebruikt worden met protected keyword
     // returned timeleaf html bestand naam
     @GetMapping({"/", "/books"})
-    protected String showBooks(){
+    protected String showBooks(Model model){
+        model.addAttribute("allBooks", bookRepository.findAll());
         return "bookOverview";
     }
 }
