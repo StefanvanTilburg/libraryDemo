@@ -1,6 +1,7 @@
 package nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.controller;
 
 import nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.model.Book;
+import nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.repository.AuthorRepository;
 import nl.miwgroningen.cohort4.stefanvantilburg.libraryDemo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
+    @Autowired
+    AuthorRepository authorRepository;
+
     // Reageren op GET verzoeken van type book (deze getter haalt een view)
     // moet gebruikt worden met protected keyword
     // returned timeleaf html bestand naam
@@ -34,6 +38,7 @@ public class BookController {
     @GetMapping("/books/add")
     protected String showBookForm(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("allAuthors", authorRepository.findAll());
         return "bookForm";
     }
 
