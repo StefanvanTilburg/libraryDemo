@@ -15,7 +15,11 @@
             <th>Buy new copy</th>
         </tr>
         <tr th:each="book: ${allBooks}">
-
+            <td th:text="${book.bookID}" />
+            <td th:text="${book.title}" />
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </body>

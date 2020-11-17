@@ -17,4 +17,20 @@ public class Book {
     private Integer bookID;
 
     private String title;
+
+    public Integer getBookID() {
+        return bookID;
+    }
+
+    public void setBookID(Integer bookID) {
+        this.bookID = bookID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
