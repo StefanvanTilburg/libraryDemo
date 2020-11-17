@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copy overview</title>
+</head>
+<body>
+<h1>Overview of existing Copies</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Version</th>
+        <th>Copy Of</th>
+    </tr>
+    <tr th:each="copy: ${allCopies}">
+        <td th:text="${copy.copyId}" />
+        <td th:text="${copy.version}" />
+        <td th:text="${copy.book.title}" />
+    </tr>
+</table>
+
+<h1>Create a new Copy</h1>
+<form th:action="@{/copy/add}" th:object="${copy}" method="post">
+    <p>Version: <input type="text" th:field="*{version}" /></p>
+    <p>
+        Book:
+        <select th:field="*{book}">
+            <option th:each="book: ${allBooks}" th:value="${copy.copyId}" th:text="${book.title}"></option>
+        </select>
+    </p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>
