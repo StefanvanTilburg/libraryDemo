@@ -20,7 +20,7 @@ public class BookController {
     // Reageren op GET verzoeken van type book (deze getter haalt een view)
     // moet gebruikt worden met protected keyword
     // returned timeleaf html bestand naam
-    @GetMapping("/books")
+    @GetMapping({"/", "/books"})
     protected String showBooks(){
         return "bookOverview";
     }
