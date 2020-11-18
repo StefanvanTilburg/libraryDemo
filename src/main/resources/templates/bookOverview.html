@@ -19,8 +19,8 @@
             <td th:text="${book.bookID}" />
             <td th:text="${book.title}" />
             <td th:text="${book.author.name}" />
-            <td></td>
-            <td></td>
+            <td th:text="${book.numberOfCopies}" />
+            <td><a th:href="@{/copy/add/{bookID}(bookID=${book.bookID})}">Add</a></td>
         </tr>
     </table>
 

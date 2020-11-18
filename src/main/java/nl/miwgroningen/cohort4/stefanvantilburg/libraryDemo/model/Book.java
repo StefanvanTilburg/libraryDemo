@@ -23,8 +23,8 @@ public class Book {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Author author;
 
-    @OneToMany(mappedBy = "copyId")
-    private List<Copy> myCopies;
+    @OneToMany(mappedBy = "book")
+    private List<Copy> copies;
 
     public Integer getBookID() {
         return bookID;
@@ -51,6 +51,6 @@ public class Book {
     }
 
     public int getNumberOfCopies() {
-        return this.myCopies.size();
+        return this.copies.size();
     }
 }

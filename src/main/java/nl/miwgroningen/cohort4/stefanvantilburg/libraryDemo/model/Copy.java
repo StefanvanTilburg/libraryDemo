@@ -15,7 +15,7 @@ public class Copy {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer copyId;
 
-    private String version;
+    private Boolean available = true;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "bookID", referencedColumnName = "bookID", nullable = false)
@@ -30,19 +30,19 @@ public class Copy {
         this.copyId = copyId;
     }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
     public Book getBook() {
         return book;
     }
 
-    public void setBook(Book myBook) {
-        this.book = myBook;
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 }
