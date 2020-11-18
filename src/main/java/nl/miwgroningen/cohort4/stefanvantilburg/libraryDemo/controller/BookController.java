@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 /**
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>
@@ -33,6 +36,16 @@ public class BookController {
     protected String showBooks(Model model) {
         model.addAttribute("allBooks", bookRepository.findAll());
         return "bookOverview";
+    }
+
+    @GetMapping("/book/{bookTitle}")
+    protected String showBookDetails(Model model, @PathVariable("bookTitle") String bookTitle) {
+        Optional<Book> optionalBook = bookRepository.findByTitle(bookTitle);
+        if (optionalBook.isEmpty()) {
+            return "redirect:/books";
+        }
+        model.addAttribute("book", optionalBook.get());
+        return "bookDetails";
     }
 
     @GetMapping("/books/add")

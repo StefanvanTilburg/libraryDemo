@@ -10,7 +10,6 @@
     <h1>Books</h1>
     <table>
         <tr>
-            <th>Id</th>
             <th>Title</th>
             <th>Author</th>
             <th># of copies</th>
@@ -18,8 +17,7 @@
             <th>Buy new copy through Title</th>
         </tr>
         <tr th:each="book: ${allBooks}">
-            <td th:text="${book.bookID}" />
-            <td th:text="${book.title}" />
+            <td><a th:href="@{/book/{bookTitle}(bookTitle=${book.title})}" th:text="${book.title}"/></td>
             <td th:text="${book.author.name}" />
             <td th:text="${book.numberOfCopies}" />
             <td><a th:href="@{/copy/add/{bookID}(bookID=${book.bookID})}">Add</a></td>
